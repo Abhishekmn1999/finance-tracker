@@ -28,7 +28,6 @@ export default function Header({ pathname, onMenuClick }) {
           className="btn-ghost"
           onClick={onMenuClick}
           id="menu-toggle"
-          style={{ display: 'none' }}
           aria-label="Toggle menu"
         >
           <Menu size={20} />

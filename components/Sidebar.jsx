@@ -46,8 +46,9 @@ export default function Sidebar({ user, mobileOpen, onClose }) {
           <button
             onClick={onClose}
             className="btn-ghost"
-            style={{ marginLeft: 'auto', display: 'none' }}
+            style={{ marginLeft: 'auto' }}
             id="sidebar-close"
+            aria-label="Close sidebar"
           >
             <X size={18} />
           </button>
@@ -82,7 +83,15 @@ export default function Sidebar({ user, mobileOpen, onClose }) {
             </div>
           </div>
           <button
-            onClick={() => signOut({ callbackUrl: '/' })}
+            onClick={async () => {
+              try {
+                await signOut({ redirect: false })
+              } catch (err) {
+                console.error('Logout error:', err)
+              } finally {
+                window.location.href = '/'
+              }
+            }}
             className="btn btn-secondary w-full"
             style={{ justifyContent: 'center', gap: 8, fontSize: '0.8rem', padding: '8px' }}
             id="logout-btn"
