@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   serverExternalPackages: ['@prisma/client'],
+  outputFileTracingIncludes: {
+    '/api/**/*': ['./dev.db', './prisma/**/*'],
+  },
   devIndicators: {
     appIsrStatus: false,
     buildActivity: false,
